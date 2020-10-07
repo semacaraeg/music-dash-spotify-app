@@ -10,32 +10,32 @@ const AlbumsResultList = ({ albums }) => {
           {albums.items.map((album, index) => {
             return (
               <React.Fragment key={index}>
+                <a
+                 target="_blank"
+                 href={album.external_urls.spotify}
+                 rel="noopener noreferrer"
+                 className="card-image-link"
+                 >
+                  <Card style={{ width: '10rem' }} className="bg-dark text-white">
 
-                <Card style={{ width: '10rem' }} className="bg-dark text-white">
-                   <a
-                    target="_blank"
-                    href={album.external_urls.spotify}
-                    rel="noopener noreferrer"
-                    className="card-image-link"
-                  >
-                    {!_.isEmpty(album.images) ? (
-                      <Card.Img
-                        variant="top"
-                        src={album.images[0].url}
-                        alt=""
-                      />
-                    ) : (
-                      <img src="" alt="" />
-                    )}
-                  </a>
-                  <Card.ImgOverlay>
-                    <Card.Title className="card-title">{album.name}</Card.Title>
-                    <Card.Text className="card-details">
-                        {album.artists.map((artist) => artist.name).join(', ')}
-                    </Card.Text>
-                  </Card.ImgOverlay>
-                </Card>
+                      {!_.isEmpty(album.images) ? (
+                        <Card.Img
+                          variant="top"
+                          src={album.images[0].url}
+                          alt=""
+                        />
+                      ) : (
+                        <img src="" alt="" />
+                      )}
 
+                    <Card.ImgOverlay>
+                      <Card.Title className="card-title">{album.name}</Card.Title>
+                      <Card.Text className="card-details">
+                          {album.artists.map((artist) => artist.name).join(', ')}
+                      </Card.Text>
+                    </Card.ImgOverlay>
+                  </Card>
+                </a>
               </React.Fragment>
             );
           })}

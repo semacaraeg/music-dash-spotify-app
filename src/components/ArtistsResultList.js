@@ -10,13 +10,14 @@ const ArtistsResultList = ({ artists }) => {
           {artists.items.map((artist, index) => {
             return (
               <React.Fragment key={index}>
+              <a
+                target="_blank"
+                href={artist.external_urls.spotify}
+                rel="noopener noreferrer"
+                className="card-image-link"
+              >
                 <Card style={{ width: '10rem' }} className="bg-dark text-white">
-                  <a
-                    target="_blank"
-                    href={artist.external_urls.spotify}
-                    rel="noopener noreferrer"
-                    className="card-image-link"
-                  >
+
                     {!_.isEmpty(artist.images) ? (
                       <Card.Img
                         variant="top"
@@ -26,11 +27,12 @@ const ArtistsResultList = ({ artists }) => {
                     ) : (
                       <img src="" alt="" />
                     )}
-                  </a>
+
                   <Card.ImgOverlay>
                     <Card.Title className="card-title">{artist.name}</Card.Title>
                   </Card.ImgOverlay>
                 </Card>
+                </a>
               </React.Fragment>
             );
           })}
