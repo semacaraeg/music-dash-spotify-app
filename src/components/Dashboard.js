@@ -9,6 +9,8 @@ import {
 } from '../result';
 
 const Dashboard = (props) => {
+
+  //setting states
   const [isLoading, setIsLoading] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('albums');
   const { isValidSession, history } = props;
@@ -30,17 +32,23 @@ const Dashboard = (props) => {
      const { albums, artists, tracks, playlist} = props;
      const result = { albums, artists, tracks, playlist};
 
- return <div>Dashboard Page
- <Header />
- <Search processSearch={processSearch}/>
-  <ResultPage
-    result={result}
-    //loadMore={loadMore}
-    setCategory={setCategory}
-    selectedCategory={selectedCategory}
-    isValidSession={isValidSession}
-  />
-  </div>;
+ return (
+   <div>Dashboard Page
+   <Header />
+
+   //section for Search Form
+   <Search processSearch={processSearch}/>
+
+  //section for the results
+    <ResultPage
+      result={result}
+      //loadMore={loadMore}
+      setCategory={setCategory}
+      selectedCategory={selectedCategory}
+      isValidSession={isValidSession}
+    />
+    </div>
+  );
 };
 
 

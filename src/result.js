@@ -9,6 +9,7 @@ import {
   ADD_TRACKS
 } from './misc/miscellaneous';
 import { get } from './misc/api';
+
 export const setAlbums = (albums) => ({
   type: SET_ALBUMS,
   albums
@@ -45,7 +46,6 @@ export const addTracks = (tracks) => ({
 export const initiateGetResult = (searchQuery) => {
   return async (dispatch) => {
     try {
-
       const API_URL = `https://api.spotify.com/v1/search?query=${encodeURIComponent(
         searchQuery
       )}&type=album,playlist,artist,track`;

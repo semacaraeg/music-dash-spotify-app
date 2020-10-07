@@ -1,9 +1,10 @@
 import React from 'react';
 import _ from 'lodash';
-import AlbumsResult from './AlbumsResult';
-import ArtistsResult from './ArtistsResult';
-import PlaylistResult from './PlaylistResult';
-import TracksResult from './TracksResult';
+import AlbumsResult from './AlbumsResultList';
+import ArtistsResult from './ArtistsResultList';
+import PlaylistResult from './PlaylistResultList';
+import TracksResult from './TracksResultList';
+
 const ResultPage = (props) => {
   const { result, setCategory, selectedCategory } = props;
   const { albums, artists, tracks, playlist } = result;
@@ -52,10 +53,8 @@ const ResultPage = (props) => {
             PlayLists
           </button>
         )}
-
-
-
       </div>
+
       <div className={`${selectedCategory === 'albums' ? '' : 'hide'}`}>
         {albums && <AlbumsResult albums={albums} />}
       </div>

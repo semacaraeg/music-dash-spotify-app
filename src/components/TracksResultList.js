@@ -2,7 +2,7 @@ import React from 'react';
 import { Card } from 'react-bootstrap';
 import _ from 'lodash';
 //import music from '../images/music.jpeg';
-const TracksResult = ({ tracks }) => {
+const TracksResultList = ({ tracks }) => {
   return (
     <React.Fragment>
       {Object.keys(tracks).length > 0 && (
@@ -40,4 +40,4 @@ const TracksResult = ({ tracks }) => {
     </React.Fragment>
   );
 };
-export default TracksResult;
+export default TracksResultList;
