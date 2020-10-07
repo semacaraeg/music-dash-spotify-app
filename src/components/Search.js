@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Row, Col } from 'react-bootstrap';
 const Search = (props) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
@@ -13,27 +13,36 @@ const Search = (props) => {
       setErrorMsg('');
       props.processSearch(searchQuery);
     } else {
-      setErrorMsg('Please enter a search term.');
+      //error message when search is empty
+      setErrorMsg('Please enter something to search!');
     }
   };
   return (
-    <div>
+    <div className="searchDiv">
       <Form onSubmit={processSearch}>
         {errorMsg && <p className="errorMsg">{errorMsg}</p>}
-        <Form.Group controlId="formBasicEmail">
-          <Form.Label>Enter search term</Form.Label>
-          <Form.Control
-            type="search"
-            name="searchQuery"
-            value={searchQuery}
-            placeholder="Search for album, artist, song or  playlist"
-            onChange={processInputChange}
-            autoComplete="off"
-          />
-        </Form.Group>
-        <Button variant="info" type="submit">
-          Search
-        </Button>
+        <Form.Row className="align-items-center">
+          <Col xs={10}>
+            <Form.Label htmlFor="inlineFormInput" srOnly>
+              Search
+            </Form.Label>
+            <Form.Control
+              type="search"
+              name="searchQuery"
+              value={searchQuery}
+              placeholder="Search for album, artist, song or  playlist"
+              onChange={processInputChange}
+              autoComplete="off"
+              className="mb-2"
+            />
+          </Col>
+
+          <Col xs={2}>
+            <Button variant="outline-light" type="submit"  className="mb-2">
+            Search
+            </Button>
+          </Col>
+        </Form.Row>
       </Form>
     </div>
   );

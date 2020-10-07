@@ -8,7 +8,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background: #ccc;
+  background: #D5896F;
   font-family: 'Montserrat', -apple-system, system-ui, BlinkMacSystemFont,
     'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-size: 20px;
@@ -17,7 +17,7 @@ body {
 }
 
 .btn {
-  letter-spacing: 1px;
+  letter-spacing: 2px;
 }
 
 .login {
@@ -28,7 +28,24 @@ body {
 }
 
 .login .btn {
-  font-size: 1.2rem;
+  font-size: 16px;
+}
+
+
+.hero-div{
+  background: url('assets/header-img.jpg') 70%;
+  width: 89vw;
+  height: 90vh;
+  text-align: center;
+  vertical-align: middle;
+  opacity: 80%;
+}
+
+.float-header{
+margin-top: 100px;
+margin-right: 40px;
+float:right;
+opacity: 100%;
 }
 
 .main {
@@ -42,6 +59,7 @@ body {
 
 .main-heading {
   margin: 2rem 0;
+  font-size: 50px;
 }
 
 .hide {
@@ -104,11 +122,17 @@ body {
   overflow: hidden;
 }
 
+.searchDiv{
+  margin-top: 15px;
+  margin-left: 50px;
+}
 .errorMsg {
   color: #f21e08;
   background: #fff0f0;
-  padding: 0.5rem;
+  padding: 0.3rem;
   margin-top: 0.5rem;
+  font-size: 14px;
+  width: 83%;
 }
 
 .search-buttons {

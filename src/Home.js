@@ -3,6 +3,7 @@ import './Home.css';
 import { connect } from 'react-redux';
 import { Button } from 'react-bootstrap';
 import Header from './components/Header';
+import logo from './logo.svg';
 
 const Home = (props) => {
 //setting the values from the .env file
@@ -18,9 +19,11 @@ const Home = (props) => {
 
   return (
     <div className="Home">
-      <Header />
-      <Button variant="info" type="submit" onClick={processLogin}>
-      Sign-in to Spotify
+      <Header className="App-header"/>
+      <p className="App-author">by Sarah Macaraeg</p>
+      <img src={logo} className="App-logo" alt="logo" />
+      <Button variant="outline-light" size="lg" type="submit" onClick={processLogin}>
+      SIGN-IN TO SPOTIFY
       </Button>
     </div>
   );

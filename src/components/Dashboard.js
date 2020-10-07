@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom';
 import Search from './Search';
 import ResultPage from './ResultPage';
 import Header from './Header';
+import Hero from './Hero';
 import {
   initiateGetResult
 } from '../result';
@@ -33,20 +34,18 @@ const Dashboard = (props) => {
      const result = { albums, artists, tracks, playlist};
 
  return (
-   <div>Dashboard Page
-   <Header />
-
-   //section for Search Form
-   <Search processSearch={processSearch}/>
-
-  //section for the results
-    <ResultPage
-      result={result}
-      //loadMore={loadMore}
-      setCategory={setCategory}
-      selectedCategory={selectedCategory}
-      isValidSession={isValidSession}
-    />
+   <div>
+     <Hero />
+     {/*section for Search Form*/}
+     <Search processSearch={processSearch}/>
+     {/*section for the results*/}
+      <ResultPage
+        result={result}
+        //loadMore={loadMore}
+        setCategory={setCategory}
+        selectedCategory={selectedCategory}
+        isValidSession={isValidSession}
+      />
     </div>
   );
 };
