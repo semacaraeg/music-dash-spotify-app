@@ -13,7 +13,7 @@ const Dashboard = (props) => {
 
   //setting states
   const [isLoading, setIsLoading] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState('albums');
+  const [selectedCategory, setSelectedCategory] = useState('tracks');
   const { isValidSession, history } = props;
 
   const processSearch = (searchQuery) => {
@@ -22,7 +22,7 @@ const Dashboard = (props) => {
         setIsLoading(true);
         props.dispatch(initiateGetResult(searchQuery)).then(() => {
           setIsLoading(false);
-          setSelectedCategory('albums');
+          setSelectedCategory('tracks');
         });
     };
 
@@ -49,7 +49,6 @@ const Dashboard = (props) => {
     </div>
   );
 };
-
 
  const mapStateToProps = (state) => {
   return {

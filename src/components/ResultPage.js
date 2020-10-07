@@ -10,7 +10,19 @@ const ResultPage = (props) => {
   const { albums, artists, tracks, playlist } = result;
   return (
     <React.Fragment>
-      <div className="search-buttons">
+    {/* Buttons to select categories */}
+      <div className="search-nav-buttons">
+        {!_.isEmpty(tracks.items) && (
+          <button
+            className={`${
+              selectedCategory === 'tracks' ? 'btn active' : 'btn'
+            }`}
+            onClick={() => setCategory('tracks')}
+          >
+            Songs
+          </button>
+        )}
+
         {!_.isEmpty(albums.items) && (
           <button
             className={`${
@@ -32,16 +44,7 @@ const ResultPage = (props) => {
           </button>
         )}
 
-        {!_.isEmpty(tracks.items) && (
-          <button
-            className={`${
-              selectedCategory === 'tracks' ? 'btn active' : 'btn'
-            }`}
-            onClick={() => setCategory('tracks')}
-          >
-            Songs
-          </button>
-        )}
+
 
         {!_.isEmpty(playlist.items) && (
           <button
@@ -50,26 +53,25 @@ const ResultPage = (props) => {
             }`}
             onClick={() => setCategory('playlist')}
           >
-            PlayLists
+            Playlists
           </button>
         )}
       </div>
-
-      <div className={`${selectedCategory === 'albums' ? '' : 'hide'}`}>
-        {albums && <AlbumsResult albums={albums} />}
+      {/*Show the results for the search query categorized in categories*/}
+      <div className="resultsContainer">
+        <div className={`${selectedCategory === 'tracks' ? '' : 'hide'}`}>
+          {tracks && <TracksResult tracks={tracks} />}
+        </div>
+        <div className={`${selectedCategory === 'albums' ? '' : 'hide'}`}>
+          {albums && <AlbumsResult albums={albums} />}
+        </div>
+        <div className={`${selectedCategory === 'artists' ? '' : 'hide'}`}>
+          {artists && <ArtistsResult artists={artists} />}
+        </div>
+        <div className={`${selectedCategory === 'playlist' ? '' : 'hide'}`}>
+          {playlist && <PlaylistResult playlist={playlist} />}
+        </div>
       </div>
-      <div className={`${selectedCategory === 'artists' ? '' : 'hide'}`}>
-        {artists && <ArtistsResult artists={artists} />}
-      </div>
-
-      <div className={`${selectedCategory === 'tracks' ? '' : 'hide'}`}>
-        {tracks && <TracksResult tracks={tracks} />}
-      </div>
-
-      <div className={`${selectedCategory === 'playlist' ? '' : 'hide'}`}>
-        {playlist && <PlaylistResult playlist={playlist} />}
-      </div>
-
     </React.Fragment>
   );
 };

@@ -10,7 +10,8 @@ const AlbumsResultList = ({ albums }) => {
           {albums.items.map((album, index) => {
             return (
               <React.Fragment key={index}>
-                <Card style={{ width: '18rem' }}>
+
+                <Card style={{ width: '10rem' }} className="bg-dark text-white">
                    <a
                     target="_blank"
                     href={album.external_urls.spotify}
@@ -27,15 +28,14 @@ const AlbumsResultList = ({ albums }) => {
                       <img src="" alt="" />
                     )}
                   </a>
-                  <Card.Body>
-                    <Card.Title>{album.name}</Card.Title>
-                    <Card.Text>
-                      <small>
+                  <Card.ImgOverlay>
+                    <Card.Title className="card-title">{album.name}</Card.Title>
+                    <Card.Text className="card-details">
                         {album.artists.map((artist) => artist.name).join(', ')}
-                      </small>
                     </Card.Text>
-                  </Card.Body>
+                  </Card.ImgOverlay>
                 </Card>
+
               </React.Fragment>
             );
           })}

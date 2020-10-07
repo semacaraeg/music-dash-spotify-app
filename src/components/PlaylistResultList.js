@@ -10,7 +10,7 @@ const PlaylistResultList = ({ playlist }) => {
           {playlist.items.map((item, index) => {
             return (
               <React.Fragment key={index}>
-                <Card style={{ width: '18rem' }}>
+                <Card style={{ width: '10rem' }} className="bg-dark text-white">
                   <a
                     target="_blank"
                     href={item.external_urls.spotify}
@@ -23,12 +23,12 @@ const PlaylistResultList = ({ playlist }) => {
                       <img src="" alt="" />
                     )}
                   </a>
-                  <Card.Body>
-                    <Card.Title>{item.name}</Card.Title>
-                    <Card.Text>
-                      <small>By {item.owner.display_name}</small>
+                  <Card.ImgOverlay>
+                    <Card.Title className="card-title">{item.name}</Card.Title>
+                    <Card.Text className="card-details">
+                      By {item.owner.display_name}
                     </Card.Text>
-                  </Card.Body>
+                  </Card.ImgOverlay>
                 </Card>
               </React.Fragment>
             );
