@@ -36,7 +36,7 @@ const Home = (props) => {
           <Header />
           {/* Shows an Alert message that the session expired.*/}
           {sessionExpired && (
-            <Alert variant="info">Session expired. Please login again.</Alert>
+            <Alert variant="danger">Your session has expired.</Alert>
           )}
           <Button variant="outline-dark" type="submit" onClick={processLogin}>
             Start Here >> LOGIN TO SPOTIFY
