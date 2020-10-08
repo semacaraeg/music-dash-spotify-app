@@ -63,6 +63,7 @@ export const initiateGetResult = (searchQuery) => {
     }
   };
 };
+
 export const initiateLoadMoreTracks = (url) => {
   return async (dispatch) => {
     try {

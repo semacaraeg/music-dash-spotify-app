@@ -19,8 +19,9 @@ const ArtistsResultList = ({ artists }) => {
                 href={artist.external_urls.spotify}
                 rel="noopener noreferrer"
                 className="card-image-link"
+
               >
-                <Card style={{ width: '10rem' }} className="bg-dark text-white">
+                <Card style={{ width: '10rem' }} className="bg-dark text-white" >
 
                     {!_.isEmpty(artist.images) ? (
                       <Card.Img
@@ -34,6 +35,9 @@ const ArtistsResultList = ({ artists }) => {
 
                   <Card.ImgOverlay>
                     <Card.Title className="card-title">{artist.name}</Card.Title>
+                    <Card.Text className="card-details">
+                        has {artist.followers.total} Followers
+                    </Card.Text>
                   </Card.ImgOverlay>
                 </Card>
                 </a>
