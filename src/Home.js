@@ -23,7 +23,7 @@ const Home = (props) => {
 
   return (
     <React.Fragment>
-      {checkSessionValid ? (
+      {checkSessionValid() ? (
         <Redirect to="/dashboard" />
       ) : (
         <div className="login">

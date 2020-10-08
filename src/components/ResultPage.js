@@ -92,8 +92,8 @@ const ResultPage = (props) => {
       {!_.isEmpty(result[selectedCategory]) &&
        !_.isEmpty(result[selectedCategory].next) && (
         <div className="load-more" onClick={() => loadMore(selectedCategory)}>
-          <Button variant="outline-light" type="button">
-            More {selectedCategory}
+          <Button variant="dark" type="button">
+            More {selectedCategory}...
           </Button>
         </div>
       )}

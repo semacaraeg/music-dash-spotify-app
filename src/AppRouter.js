@@ -46,7 +46,8 @@ class AppRouter extends React.Component {
                 />
               )}
             />
-            <Route path="/dashboard" render={(props) => (
+            <Route path="/dashboard"
+            render={(props) => (
               <Dashboard checkSessionValid={this.checkSessionValid} {...props} />
             )} />
             <Route component={PageNotFound} />

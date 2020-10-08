@@ -30,7 +30,7 @@ const Search = (props) => {
               type="search"
               name="searchQuery"
               value={searchQuery}
-              placeholder="Search for album, artist, song or  playlist"
+              placeholder="Search..."
               onChange={processInputChange}
               autoComplete="off"
               className="mb-2"
@@ -38,7 +38,7 @@ const Search = (props) => {
           </Col>
 
           <Col xs={2}>
-            <Button variant="outline-light" type="submit"  className="mb-2">
+            <Button variant="outline-dark" type="submit"  className="mb-2">
             Search
             </Button>
           </Col>

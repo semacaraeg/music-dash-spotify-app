@@ -68,11 +68,9 @@ const Dashboard = (props) => {
        }
     };
 
-
-
  return (
    <React.Fragment>
-     { checkSessionValid ? (
+     {checkSessionValid() ? (
        <div>
          <Hero />
          {/*section for Search Form*/}
