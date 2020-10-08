@@ -1,3 +1,9 @@
+/*
+Handles Routing in the App.
+This is where the expiry_time is obtained from the returned url from the Spotify Auth.
+Routes to Dashboard when the session is valid otherwise back to Home Page.
+*/
+
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from './Home';

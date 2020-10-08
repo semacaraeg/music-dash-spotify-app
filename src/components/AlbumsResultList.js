@@ -1,15 +1,19 @@
-import React from 'react';
+/*
+Component for the list of Albums
+Used react-bootstrap Cards
+*/
+import React, {Fragment} from 'react';
 import { Card } from 'react-bootstrap';
 import _ from 'lodash';
 import albumImg from '../assets/albums.jpg';
 const AlbumsResultList = ({ albums }) => {
   return (
-    <React.Fragment>
+    <Fragment>
       {Object.keys(albums).length > 0 && (
         <div className="albums">
           {albums.items.map((album, index) => {
             return (
-              <React.Fragment key={index}>
+              <Fragment key={index}>
                 <a
                  target="_blank"
                  href={album.external_urls.spotify}
@@ -36,12 +40,12 @@ const AlbumsResultList = ({ albums }) => {
                     </Card.ImgOverlay>
                   </Card>
                 </a>
-              </React.Fragment>
+              </Fragment>
             );
           })}
         </div>
       )}
-    </React.Fragment>
+    </Fragment>
   );
 };
 export default AlbumsResultList;

@@ -1,4 +1,8 @@
-import React from 'react';
+/*
+Component for the list of Playlists
+Used react-bootstrap Cards
+*/
+import React, {Fragment} from 'react';
 import { Card } from 'react-bootstrap';
 import _ from 'lodash';
 import albumImg from '../assets/albums.jpg';
@@ -9,7 +13,7 @@ const PlaylistResultList = ({ playlist }) => {
         <div className="playlist">
           {playlist.items.map((item, index) => {
             return (
-              <React.Fragment key={index}>
+              <Fragment key={index}>
               <a
                 target="_blank"
                 href={item.external_urls.spotify}
@@ -31,7 +35,7 @@ const PlaylistResultList = ({ playlist }) => {
                   </Card.ImgOverlay>
                 </Card>
                 </a>
-              </React.Fragment>
+              </Fragment>
             );
           })}
         </div>

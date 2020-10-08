@@ -1,5 +1,4 @@
 import { SET_ALBUMS, ADD_ALBUMS } from '../misc/miscellaneous';
-//setting the reducer initial state of reducer into empty object
 const albumsReducer = (state = {}, action) => {
   const { albums } = action;
   switch (action.type) {
