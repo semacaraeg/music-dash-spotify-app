@@ -5,14 +5,50 @@ import RedirectPage from './components/RedirectPage';
 import Dashboard from './components/Dashboard';
 import PageNotFound from './components/PageNotFound';
 class AppRouter extends React.Component {
+  state = {
+    expiryTime: '0'
+  };
+  componentDidMount(){
+    let expiryTime;
+    try{
+      expiryTime = JSON.parse(localStorage.getItem('expiry_time'));
+    } catch (error){
+      expiryTime = '0';
+    }
+    this.setState({expiryTime});
+  }
+
+  setExpiryTime = (expiryTime) => {
+     this.setState({expiryTime});
+  };
+
+  checkSessionValid = () => {
+    const current = new Date().getTime();
+    const expiryTime = this.state.expiryTime;
+    const isSessionValid = current < expiryTime;
+    return isSessionValid;
+  };
+
   render() {
     return (
       <BrowserRouter>
         <div className="main">
           <Switch>
-            <Route path="/" component={Home} exact={true} />
-            <Route path="/redirect" component={RedirectPage} />
-            <Route path="/dashboard" component={Dashboard} />
+            <Route path="/"  exact={true} render={(props) => (
+              <Home checkSessionValid={this.checkSessionValid} {...props} />
+            )} />
+            <Route path="/redirect"
+              render={(props) => (
+                <RedirectPage
+                  checkSessionValid={this.checkSessionValid}
+                  setExpiryTime={this.setExpiryTime}
+                  {...props}
+                />
+              )}
+            />
+            <Route path="/dashboard" render={(props) => (
+              <Dashboard checkSessionValid={this.checkSessionValid} {...props} />
+            )} />
             <Route component={PageNotFound} />
           </Switch>
         </div>

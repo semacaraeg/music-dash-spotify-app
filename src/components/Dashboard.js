@@ -3,27 +3,34 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import Search from './Search';
 import ResultPage from './ResultPage';
-import Header from './Header';
 import Hero from './Hero';
 import {
-  initiateGetResult
+  initiateGetResult,
+  initiateLoadMoreTracks,
+  initiateLoadMoreAlbums,
+  initiateLoadMorePlaylist,
+  initiateLoadMoreArtists
 } from '../result';
 
 const Dashboard = (props) => {
 
   //setting states
-  const [isLoading, setIsLoading] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('tracks');
-  const { isValidSession, history } = props;
-
+  const { checkSessionValid, history } = props;
   const processSearch = (searchQuery) => {
-
     //needs to check if session is Valid
-        setIsLoading(true);
+      if(checkSessionValid()){
         props.dispatch(initiateGetResult(searchQuery)).then(() => {
-          setIsLoading(false);
           setSelectedCategory('tracks');
         });
+      }else {
+        history.push({
+            pathname: '/',
+            state: {
+              session_expired: true
+            }
+        });
+      }
     };
 
     const setCategory = (category) => {
@@ -33,20 +40,63 @@ const Dashboard = (props) => {
      const { albums, artists, tracks, playlist} = props;
      const result = { albums, artists, tracks, playlist};
 
+     const loadMore = async (type) => {
+       if(checkSessionValid()){
+         const { dispatch, tracks, albums, artists, playlist } = props;
+         switch (type) {
+           case 'tracks':
+             await dispatch(initiateLoadMoreTracks(tracks.next));
+             break;
+           case 'albums':
+             await dispatch(initiateLoadMoreAlbums(albums.next));
+             break;
+           case 'artists':
+             await dispatch(initiateLoadMoreArtists(artists.next));
+             break;
+           case 'playlist':
+             await dispatch(initiateLoadMorePlaylist(playlist.next));
+             break;
+           default:
+         }
+       } else{
+         history.push({
+             pathname: '/',
+             state: {
+               session_expired: true
+             }
+         });
+       }
+    };
+
+
+
  return (
-   <div>
-     <Hero />
-     {/*section for Search Form*/}
-     <Search processSearch={processSearch}/>
-     {/*section for the results*/}
-      <ResultPage
-        result={result}
-        //loadMore={loadMore}
-        setCategory={setCategory}
-        selectedCategory={selectedCategory}
-        isValidSession={isValidSession}
-      />
-    </div>
+   <React.Fragment>
+     { checkSessionValid ? (
+       <div>
+         <Hero />
+         {/*section for Search Form*/}
+         <Search processSearch={processSearch}/>
+         {/*section for the results*/}
+          <ResultPage
+            result={result}
+            loadMore={loadMore}
+            setCategory={setCategory}
+            selectedCategory={selectedCategory}
+            checkSessionValid={checkSessionValid}
+          />
+        </div>
+      ) : (
+        <Redirect
+          to={{
+            pathname: '/',
+            state: {
+              session_expired: true
+            }
+          }}
+        />
+     )}
+   </React.Fragment>
   );
 };
 
@@ -58,4 +108,6 @@ const Dashboard = (props) => {
     playlist: state.playlist
   };
 };
+
+
 export default connect(mapStateToProps)(Dashboard);

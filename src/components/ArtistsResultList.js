@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
 import _ from 'lodash';
-//import music from '../images/music.jpeg';
+import albumImg from '../assets/albums.jpg';
 const ArtistsResultList = ({ artists }) => {
   return (
     <React.Fragment>
@@ -25,7 +25,7 @@ const ArtistsResultList = ({ artists }) => {
                         alt=""
                       />
                     ) : (
-                      <img src="" alt="" />
+                      <img src={albumImg} alt="" />
                     )}
 
                   <Card.ImgOverlay>

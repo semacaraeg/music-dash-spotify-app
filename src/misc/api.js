@@ -5,6 +5,8 @@ export const get = async (url, params) => {
   setSpotifyAuthHeader();
   //API get call thru Axios
   const result = await axios.get(url, params);
+//returns access_token and expire_in
+  console.log(result.data);
 //Returns the data from the api get request
   return result.data;
 };

@@ -3,8 +3,8 @@ import './Home.css';
 import { connect } from 'react-redux';
 import { Button } from 'react-bootstrap';
 import Header from './components/Header';
-import logo from './logo.svg';
-
+import { Alert } from 'react-bootstrap';
+import { Redirect } from 'react-router-dom';
 const Home = (props) => {
 //setting the values from the .env file
   const {
@@ -17,15 +17,26 @@ const Home = (props) => {
     window.location = `${REACT_APP_AUTHORIZE_URL}?client_id=${REACT_APP_CLIENT_ID}&redirect_uri=${REACT_APP_REDIRECT_URL}&response_type=token&show_dialog=true`;
   };
 
+  const { checkSessionValid, location } = props;
+  const { state } = location;
+  const sessionExpired = state && state.session_expired;
+
   return (
-    <div className="Home">
-      <Header className="App-header"/>
-      <p className="App-author">by Sarah Macaraeg</p>
-      <img src={logo} className="App-logo" alt="logo" />
-      <Button variant="outline-light" size="lg" type="submit" onClick={processLogin}>
-      SIGN-IN TO SPOTIFY
-      </Button>
-    </div>
+    <React.Fragment>
+      {checkSessionValid ? (
+        <Redirect to="/dashboard" />
+      ) : (
+        <div className="login">
+          <Header />
+          {sessionExpired && (
+            <Alert variant="info">Session expired. Please login again.</Alert>
+          )}
+          <Button variant="info" type="submit" onClick={processLogin}>
+            Login to spotify
+          </Button>
+        </div>
+      )}
+    </React.Fragment>
   );
 
 }

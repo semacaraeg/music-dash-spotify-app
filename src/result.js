@@ -51,13 +51,61 @@ export const initiateGetResult = (searchQuery) => {
       )}&type=album,playlist,artist,track`;
       //API Get Call to Spotify
       const result = await get(API_URL);
-      console.log(result);
+      //console.log("Result from result.js" + result);
       //saving the result to objects
       const { albums, artists, tracks, playlists } = result;
       dispatch(setAlbums(albums));
       dispatch(setArtists(artists));
       dispatch(setTracks(tracks));
       return dispatch(setPlayList(playlists));
+    } catch (error) {
+      console.log('error', error);
+    }
+  };
+};
+export const initiateLoadMoreTracks = (url) => {
+  return async (dispatch) => {
+    try {
+      console.log('url', url);
+      const result = await get(url);
+      console.log('categories', result);
+      return dispatch(addTracks(result.tracks));
+    } catch (error) {
+      console.log('error', error);
+    }
+  };
+};
+export const initiateLoadMoreAlbums = (url) => {
+  return async (dispatch) => {
+    try {
+      console.log('url', url);
+      const result = await get(url);
+      console.log('categories', result);
+      return dispatch(addAlbums(result.albums));
+    } catch (error) {
+      console.log('error', error);
+    }
+  };
+};
+export const initiateLoadMoreArtists = (url) => {
+  return async (dispatch) => {
+    try {
+      console.log('url', url);
+      const result = await get(url);
+      console.log('categories', result);
+      return dispatch(addArtists(result.artists));
+    } catch (error) {
+      console.log('error', error);
+    }
+  };
+};
+export const initiateLoadMorePlaylist = (url) => {
+  return async (dispatch) => {
+    try {
+      console.log('url', url);
+      const result = await get(url);
+      console.log('categories', result);
+      return dispatch(addPlaylist(result.playlists));
     } catch (error) {
       console.log('error', error);
     }
