@@ -38,8 +38,8 @@ const Home = (props) => {
           {sessionExpired && (
             <Alert variant="info">Session expired. Please login again.</Alert>
           )}
-          <Button variant="info" type="submit" onClick={processLogin}>
-            Login to Spotify
+          <Button variant="outline-dark" type="submit" onClick={processLogin}>
+            Start Here >> LOGIN TO SPOTIFY
           </Button>
         </div>
       )}
