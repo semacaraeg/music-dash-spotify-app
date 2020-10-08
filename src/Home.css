@@ -7,7 +7,7 @@
   height: 40vmin;
   pointer-events: none;
   display: block;
-  margin:auto;
+  margin: auto;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -26,14 +26,17 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-.App-author{
+
+.App-author {
   font-size: 18px;
   margin-top: -30px;
 }
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
