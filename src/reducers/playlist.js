@@ -1,3 +1,4 @@
+//Playlists Reducer for setting the state of the Playlists result 
 import { SET_PLAYLIST, ADD_PLAYLIST } from '../misc/miscellaneous';
 const playlistReducer = (state = {}, action) => {
   const { playlists } = action;

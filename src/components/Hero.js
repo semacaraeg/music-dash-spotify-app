@@ -1,4 +1,4 @@
-//header component
+//Hero component that shows the Big Hero banner
 import React from 'react';
 import Header from './Header';
 const Hero = () => {

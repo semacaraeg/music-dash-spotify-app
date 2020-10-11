@@ -1,5 +1,6 @@
 /*
 API calls using axios
+Getting the data from the Spotify Search API call async
 */
 import axios from 'axios';
 import { setSpotifyAuthHeader } from './functions';

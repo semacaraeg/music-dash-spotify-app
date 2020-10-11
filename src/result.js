@@ -13,6 +13,17 @@ import {
 } from './misc/miscellaneous';
 import { get } from './misc/api';
 
+//functions for Tracks/Songs
+export const setTracks = (tracks) => ({
+  type: SET_TRACKS,
+  tracks
+});
+export const addTracks = (tracks) => ({
+  type: ADD_TRACKS,
+  tracks
+});
+
+//functions for Albums Result
 export const setAlbums = (albums) => ({
   type: SET_ALBUMS,
   albums
@@ -21,6 +32,7 @@ export const addAlbums = (albums) => ({
   type: ADD_ALBUMS,
   albums
 });
+//functions for Artists Result
 export const setArtists = (artists) => ({
   type: SET_ARTISTS,
   artists
@@ -29,6 +41,8 @@ export const addArtists = (artists) => ({
   type: ADD_ARTISTS,
   artists
 });
+
+//functions for Playlists
 export const setPlayList = (playlists) => ({
   type: SET_PLAYLIST,
   playlists
@@ -38,14 +52,7 @@ export const addPlaylist = (playlists) => ({
   playlists
 });
 
-export const setTracks = (tracks) => ({
-  type: SET_TRACKS,
-  tracks
-});
-export const addTracks = (tracks) => ({
-  type: ADD_TRACKS,
-  tracks
-});
+
 //Method to populate the result initially
 export const initiateGetResult = (searchQuery) => {
   return async (dispatch) => {

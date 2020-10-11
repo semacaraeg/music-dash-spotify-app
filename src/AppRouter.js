@@ -27,7 +27,7 @@ class AppRouter extends React.Component {
   setExpiryTime = (expiryTime) => {
      this.setState({expiryTime});
   };
-
+ //method to set the rule for checking if the session is still valid and not expired
   checkSessionValid = () => {
     const current = new Date().getTime();
     const expiryTime = this.state.expiryTime;
@@ -40,9 +40,11 @@ class AppRouter extends React.Component {
       <BrowserRouter>
         <div className="main">
           <Switch>
+          {/*Route to Home page*/}
             <Route path="/"  exact={true} render={(props) => (
               <Home checkSessionValid={this.checkSessionValid} {...props} />
             )} />
+              {/*Redirect component that redirects to Spotify Authorization page*/}
             <Route path="/redirect"
               render={(props) => (
                 <RedirectPage
@@ -52,6 +54,7 @@ class AppRouter extends React.Component {
                 />
               )}
             />
+              {/*If session is valid,redirect to dashboard, else home/login*/}
             <Route path="/dashboard"
             render={(props) => (
               <Dashboard checkSessionValid={this.checkSessionValid} {...props} />

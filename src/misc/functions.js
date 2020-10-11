@@ -15,7 +15,7 @@ export const getUrlParamValues = (url) => {
     }, {});
 };
 
-//Adds access_token to every API request using Axios
+//Adds access_token to the URL header before every API request using Axios
 export const setSpotifyAuthHeader = () => {
   try {
     const params = JSON.parse(localStorage.getItem('params'));

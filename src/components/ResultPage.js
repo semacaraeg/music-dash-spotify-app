@@ -1,4 +1,7 @@
-import React from 'react';
+/*
+ResultPage component for showing the results from the Search query
+*/
+import React, {Fragment} from 'react';
 import _ from 'lodash';
 import AlbumsResult from './AlbumsResultList';
 import ArtistsResult from './ArtistsResultList';
@@ -24,9 +27,10 @@ const ResultPage = (props) => {
   );
 }
   return (
-    <React.Fragment>
-    {/* Buttons to select categories */}
+    <Fragment>
+    {/* Navigation Buttons to select categories */}
       <div className="search-nav-buttons">
+        {/* Navigation to show Songs results*/}
         {!_.isEmpty(tracks.items) && (
           <button
             className={`${
@@ -37,7 +41,7 @@ const ResultPage = (props) => {
             Songs
           </button>
         )}
-
+        {/* Navigation to show Albums results */}
         {!_.isEmpty(albums.items) && (
           <button
             className={`${
@@ -48,6 +52,7 @@ const ResultPage = (props) => {
             Albums
           </button>
         )}
+        {/* Navigation to show Artists results */}
         {!_.isEmpty(artists.items) && (
           <button
             className={`${
@@ -58,9 +63,7 @@ const ResultPage = (props) => {
             Artists
           </button>
         )}
-
-
-
+        {/* Navigation to show Playlist results */}
         {!_.isEmpty(playlist.items) && (
           <button
             className={`${
@@ -72,7 +75,9 @@ const ResultPage = (props) => {
           </button>
         )}
       </div>
-      {/*Show the results for the search query categorized in categories*/}
+      {/*Show the results for the search query categorized in categories
+        This is where the components for each category result is listed
+        */}
       <div className="resultsContainer">
         <div className={`${selectedCategory === 'tracks' ? '' : 'hide'}`}>
           {tracks && <TracksResult tracks={tracks} />}
@@ -88,7 +93,7 @@ const ResultPage = (props) => {
         </div>
       </div>
 
-      {/* Load button */}
+      {/* Load More results button */}
       {!_.isEmpty(result[selectedCategory]) &&
        !_.isEmpty(result[selectedCategory].next) && (
         <div className="load-more" onClick={() => loadMore(selectedCategory)}>
@@ -97,7 +102,7 @@ const ResultPage = (props) => {
           </Button>
         </div>
       )}
-    </React.Fragment>
+    </Fragment>
   );
 };
 export default ResultPage;

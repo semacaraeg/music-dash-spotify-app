@@ -1,5 +1,6 @@
 /*
-Store file for the reducers
+Store for the reducers, used combineReducers so the objects(tracks, albums, artists and playlists) will
+all be combined in one returned property object
 */
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';

@@ -1,3 +1,4 @@
+//Artists Reducer for setting the state of the Artists result
 import { SET_ARTISTS, ADD_ARTISTS } from '../misc/miscellaneous';
 const artistsReducer = (state = {}, action) => {
   const { artists } = action;

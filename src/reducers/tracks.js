@@ -1,3 +1,4 @@
+//Tracks Reducer for setting the state of the Tracks/Songs result 
 import { SET_TRACKS, ADD_TRACKS } from '../misc/miscellaneous';
 const tracksReducer = (state = {}, action) => {
   const { tracks } = action;

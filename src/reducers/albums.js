@@ -1,3 +1,4 @@
+//Album Reducer for setting the state of the Albums result 
 import { SET_ALBUMS, ADD_ALBUMS } from '../misc/miscellaneous';
 const albumsReducer = (state = {}, action) => {
   const { albums } = action;

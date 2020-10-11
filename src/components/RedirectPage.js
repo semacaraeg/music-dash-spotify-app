@@ -1,3 +1,6 @@
+/*
+Redirect Page that redirects to Spotify Authorization/Login Page
+*/
 import React from 'react';
 import _ from 'lodash';
 import { getUrlParamValues } from '../misc/functions';
