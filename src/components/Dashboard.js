@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+/*
+Dashboard Component includes other components such as Hero, Search Form and ResultPage
+*/
+import React, { useState, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import Search from './Search';
@@ -69,7 +72,7 @@ const Dashboard = (props) => {
     };
 
  return (
-   <React.Fragment>
+   <Fragment>
      {checkSessionValid() ? (
        <div>
          <Hero />
@@ -94,7 +97,7 @@ const Dashboard = (props) => {
           }}
         />
      )}
-   </React.Fragment>
+   </Fragment>
   );
 };
 

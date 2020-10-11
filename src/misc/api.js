@@ -1,3 +1,6 @@
+/*
+API calls using axios
+*/
 import axios from 'axios';
 import { setSpotifyAuthHeader } from './functions';
 

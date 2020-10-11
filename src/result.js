@@ -1,3 +1,6 @@
+/*
+Methods for the search result
+*/
 import {
   SET_ALBUMS,
   ADD_ALBUMS,
@@ -43,6 +46,7 @@ export const addTracks = (tracks) => ({
   type: ADD_TRACKS,
   tracks
 });
+//Method to populate the result initially
 export const initiateGetResult = (searchQuery) => {
   return async (dispatch) => {
     try {
@@ -63,7 +67,7 @@ export const initiateGetResult = (searchQuery) => {
     }
   };
 };
-
+//method when the 'More tracks' is clicked by user, returns additional 20 items
 export const initiateLoadMoreTracks = (url) => {
   return async (dispatch) => {
     try {
@@ -76,6 +80,7 @@ export const initiateLoadMoreTracks = (url) => {
     }
   };
 };
+//method when the 'More albums' is clicked by user, returns additional 20 items
 export const initiateLoadMoreAlbums = (url) => {
   return async (dispatch) => {
     try {
@@ -88,6 +93,7 @@ export const initiateLoadMoreAlbums = (url) => {
     }
   };
 };
+//method when the 'More artists' is clicked by user, returns additional 20 items
 export const initiateLoadMoreArtists = (url) => {
   return async (dispatch) => {
     try {
@@ -100,6 +106,7 @@ export const initiateLoadMoreArtists = (url) => {
     }
   };
 };
+//method when the 'More playlists' is clicked by user, returns additional 20 items
 export const initiateLoadMorePlaylist = (url) => {
   return async (dispatch) => {
     try {
